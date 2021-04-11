@@ -1,4 +1,4 @@
-.img {
-    height: 150px;
-    width: 350px;
+.card {
+    min-height:400px;
+    margin-top: 20px;
 }

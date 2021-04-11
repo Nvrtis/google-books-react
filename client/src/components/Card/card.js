@@ -1,9 +1,10 @@
 import React from 'react'
+import Buttons from '../save-button/save-button'
 import "./style.css"
 
 
 // deconstruct props and makes the cards for projects
-const Card = ({title,img, authors, link}) => {
+const Card = ({title, img, authors, link, dataId}) => {
   // console.log(props.volumeInfo.imageLinks.smallThumbnail)
   // console.log(props.volumeInfo.imageLinks.thumbnail)
 console.log(title)
@@ -13,8 +14,8 @@ console.log(title)
         <img src={img} className="img-fluid img" alt={title}/>
         <h5 className="card-title">{title}</h5>
         <p className="card-text">Authors: {authors}</p>
-        <a href={link} className="btn btn-primary">Link to page</a>
-
+        <a href={link} target="_blank" className="btn btn-primary">Link to buy</a>
+        <Buttons dataId={dataId} />
       </div>
     </div>
   )
