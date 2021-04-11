@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Save from './pages/save'
 import Home from './pages/home'
-import Nav from './components/nav'
+import Nav from './components/nav/nav'
 
 function App() {
   return (

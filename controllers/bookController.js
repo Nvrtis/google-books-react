@@ -1,5 +1,20 @@
-const db = require('../models')
+const Book = require('../models/book')
 
-// module.exports = {
+module.exports = {
   
-// }
+  getBooks: function(req, res) {
+    Book.find({})
+    .then(books => {res.json(books)} )
+    .catch(err =>res.status(500).send())  
+ 
+  },
+
+  createBooks: function(req, res) {
+    Book.create(req.body)
+    .then(bookData => {res.json(bookData)})
+    .catch(err =>{
+      console.log(err)
+      res.status(500).send()}) 
+
+  }
+}
