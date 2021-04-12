@@ -3,7 +3,7 @@ import Container from '../components/container/container'
 import Row from '../components/row/row'
 import Col from '../components/col/col'
 import API from '../utils/API'
-
+import Card from '../components/card/card'
 const Save = () => {
   const [savedBooks, setSavedBooks] = useState([])
 
@@ -18,7 +18,7 @@ const Save = () => {
   }
 
 
-
+console.log(savedBooks)
   return (
     <Container>
       <Row>

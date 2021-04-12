@@ -5,6 +5,7 @@ import Col from '../components/col/col'
 import BookSearch from '../components/bookSearch/bookSearch'
 import axios from 'axios'
 import Card from '../components/card/card'
+import API from "../utils/API"
 
 const Home = () => {
   const [books, setBooks] = useState([])
@@ -12,7 +13,7 @@ const Home = () => {
   function handleSearchForm(e) {
     e.preventDefault()
     let searchQuery = e.target[0].value.replace(/\s/g, '+')
-    console.log(searchQuery)
+    // console.log(searchQuery)
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${process.env.REACT_APP_API_KEY}`)
       .then(resp => {
         // console.log(resp.data.items)
@@ -20,7 +21,26 @@ const Home = () => {
       }).catch(err=> console.log(err))
   }
 
-  console.log(books)
+
+  function handleSaveClick(e) {
+    e.preventDefault()
+    console.log(e)
+    let title = e.target.parentElement.childNodes[3].href
+    let saveBookData = {
+      title: e.target.parentElement.childNodes[1].innerHTML,
+      img: e.target.parentElement.childNodes[0].src,
+      authors: e.target.parentElement.childNodes[2].innerHTML,
+      link: e.target.parentElement.childNodes[3].href,
+      id: e.target.parentElement.childNodes[4].attributes.dataid.value
+    }
+console.log(title)
+    API.postBook(saveBookData)
+    .then(resp => {console.log(resp)})
+    .catch(err => console.log(err))
+
+  }
+
+  // console.log(books)
   return (
     <Container>
       <Row>
@@ -30,7 +50,7 @@ const Home = () => {
       </Row>
       <Row>
         {books.map((book) => (
-          <Col className="col" key={book.id}>
+          <Col className="col" onClick={handleSaveClick} key={book.id}>
             <Card 
               title={book.volumeInfo.title}
               img={
@@ -39,7 +59,7 @@ const Home = () => {
                   : `${book.volumeInfo.imageLinks.thumbnail}`}
               authors={book.volumeInfo.authors}
               link={book.volumeInfo.canonicalVolumeLink}
-              dataId={book.id}
+              dataid={book.id}
               />
           </Col>
         )

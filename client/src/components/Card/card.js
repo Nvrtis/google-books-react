@@ -4,10 +4,10 @@ import "./style.css"
 
 
 // deconstruct props and makes the cards for projects
-const Card = ({title, img, authors, link, dataId}) => {
+const Card = ({title, img, authors, link, dataid}) => {
   // console.log(props.volumeInfo.imageLinks.smallThumbnail)
   // console.log(props.volumeInfo.imageLinks.thumbnail)
-console.log(title)
+// console.log(title)
   return (
     <div className="card">
       <div className="card-body">
@@ -15,7 +15,7 @@ console.log(title)
         <h5 className="card-title">{title}</h5>
         <p className="card-text">Authors: {authors}</p>
         <a href={link} target="_blank" className="btn btn-primary">Link to buy</a>
-        <Buttons dataId={dataId} />
+        <Buttons dataid={dataid} />
       </div>
     </div>
   )
