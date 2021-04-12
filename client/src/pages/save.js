@@ -12,14 +12,13 @@ const Save = () => {
     loadBooks()
   }, []);
 
-  function loadBooks () {
+  function loadBooks() {
     API.getAllBooks().then(resp => { setSavedBooks(resp.data) })
   }
 
   function handleDeleteClick(e) {
     e.preventDefault()
-    // console.log(_id: e.target.attributes[1].value)
-    API.deleteBook( e.target.attributes[1].value).then(
+    API.deleteBook(e.target.attributes[1].value).then(
       loadBooks()
     )
   }
@@ -31,20 +30,20 @@ const Save = () => {
         {savedBooks.length === 0 ?
           "No saved books"
           : savedBooks.map((book) => (
-              <Col className="col" onClick={handleDeleteClick} key={book._id}>
-                <SavedCard
-                  title={book.title}
-                  img={
-                    book.img === undefined
-                      ? ""
-                      : `${book.img}`}
-                  authors={book.authors}
-                  link={book.link}
-                  datavalue={book._id}
-                />
-              </Col>
-            )
-            )
+            <Col className="col" onClick={handleDeleteClick} key={book._id}>
+              <SavedCard
+                title={book.title}
+                img={
+                  book.img === undefined
+                    ? ""
+                    : `${book.img}`}
+                authors={book.authors}
+                link={book.link}
+                datavalue={book._id}
+              />
+            </Col>
+          )
+          )
         }
       </Row>
     </Container>

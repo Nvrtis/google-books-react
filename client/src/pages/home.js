@@ -13,19 +13,17 @@ const Home = () => {
   function handleSearchForm(e) {
     e.preventDefault()
     let searchQuery = e.target[0].value.replace(/\s/g, '+')
-    // console.log(searchQuery)
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${process.env.REACT_APP_API_KEY}`)
       .then(resp => {
-        // console.log(resp.data.items)
         setBooks(resp.data.items)
-      }).catch(err=> console.log(err))
+      }).catch(err => console.log(err))
   }
 
 
   function handleSaveClick(e) {
     e.preventDefault()
     API.getBook(e.target.parentElement.childNodes[4].attributes.dataid.value).then(resp => {
-      if(resp.data===null){
+      if (resp.data === null) {
         let saveBookData = {
           title: e.target.parentElement.childNodes[1].innerHTML,
           img: e.target.parentElement.childNodes[0].src,
@@ -33,17 +31,16 @@ const Home = () => {
           link: e.target.parentElement.childNodes[3].href,
           id: e.target.parentElement.childNodes[4].attributes.dataid.value
         }
-            API.postBook(saveBookData)
-    .then(resp => {console.log(resp)})
-    .catch(err => console.log(err))
+        API.postBook(saveBookData)
+          .then(resp => { console.log(resp) })
+          .catch(err => console.log(err))
       } else {
         alert("book already in saved storage")
       }
-        })
-   
-    }
+    })
 
-  // console.log(books)
+  }
+
   return (
     <Container>
       <Row>
@@ -54,7 +51,7 @@ const Home = () => {
       <Row>
         {books.map((book) => (
           <Col className="col" onClick={handleSaveClick} key={book.id}>
-            <Card 
+            <Card
               title={book.volumeInfo.title}
               img={
                 book.volumeInfo.imageLinks === undefined
@@ -63,7 +60,7 @@ const Home = () => {
               authors={book.volumeInfo.authors}
               link={book.volumeInfo.canonicalVolumeLink}
               dataid={book.id}
-              />
+            />
           </Col>
         )
         )}
