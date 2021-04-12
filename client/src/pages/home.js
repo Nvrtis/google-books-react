@@ -24,21 +24,24 @@ const Home = () => {
 
   function handleSaveClick(e) {
     e.preventDefault()
-    console.log(e)
-    let title = e.target.parentElement.childNodes[3].href
-    let saveBookData = {
-      title: e.target.parentElement.childNodes[1].innerHTML,
-      img: e.target.parentElement.childNodes[0].src,
-      authors: e.target.parentElement.childNodes[2].innerHTML,
-      link: e.target.parentElement.childNodes[3].href,
-      id: e.target.parentElement.childNodes[4].attributes.dataid.value
-    }
-console.log(title)
-    API.postBook(saveBookData)
+    API.getBook(e.target.parentElement.childNodes[4].attributes.dataid.value).then(resp => {
+      if(resp.data===null){
+        let saveBookData = {
+          title: e.target.parentElement.childNodes[1].innerHTML,
+          img: e.target.parentElement.childNodes[0].src,
+          authors: e.target.parentElement.childNodes[2].innerHTML,
+          link: e.target.parentElement.childNodes[3].href,
+          id: e.target.parentElement.childNodes[4].attributes.dataid.value
+        }
+            API.postBook(saveBookData)
     .then(resp => {console.log(resp)})
     .catch(err => console.log(err))
-
-  }
+      } else {
+        alert("book already in saved storage")
+      }
+        })
+   
+    }
 
   // console.log(books)
   return (

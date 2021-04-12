@@ -26,4 +26,13 @@ module.exports = {
       res.status(500).send()
     })
   },
+
+  getBook: function(req, res) {
+    console.log(req.params)
+   Book.findOne(req.params)
+    .then(book => {res.json(book)})
+    .catch(err =>res.status(500).send())       
+
+},
+
 }
