@@ -1,13 +1,13 @@
 import React from 'react'
-import Buttons from '../save-button/save-button'
+import DeleteButtons from '../delete-button/delete-button'
 import "./style.css"
 
 
 // deconstruct props and makes the cards for projects
-const Card = ({title, img, authors, link, dataid}) => {
+const SavedCard = ({title, img, authors, link, datavalue}) => {
   // console.log(props.volumeInfo.imageLinks.smallThumbnail)
   // console.log(props.volumeInfo.imageLinks.thumbnail)
-// console.log(title)
+console.log(datavalue)
   return (
     <div className="card">
       <div className="card-body">
@@ -15,10 +15,10 @@ const Card = ({title, img, authors, link, dataid}) => {
         <h5 className="card-title">{title}</h5>
         <p className="card-text">Authors: {authors}</p>
         <a href={link} target="_blank" rel="noreferrer" className="btn btn-primary">Link to buy</a>
-        <Buttons dataid={dataid} />
+        <DeleteButtons datavalue={datavalue} />
       </div>
     </div>
   )
 }
 
-export default Card
+export default SavedCard

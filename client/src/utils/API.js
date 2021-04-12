@@ -6,5 +6,5 @@ export default {
   },
   postBook: function(data) {
     return axios.post("/api/books", data)
-  }
+  },
 }
