@@ -7,4 +7,7 @@ export default {
   postBook: function(data) {
     return axios.post("/api/books", data)
   },
+  deleteBook: function(id){
+    return axios.delete("/api/books/" + id)
+ }
 }

@@ -9,12 +9,19 @@ const Save = () => {
 
 
   useEffect(() => {
-    API.getAllBooks().then(resp => { setSavedBooks(resp.data) })
+    loadBooks()
   }, []);
+
+  function loadBooks () {
+    API.getAllBooks().then(resp => { setSavedBooks(resp.data) })
+  }
 
   function handleDeleteClick(e) {
     e.preventDefault()
-    console.log(e.target.attributes[1].value)
+    // console.log(_id: e.target.attributes[1].value)
+    API.deleteBook( e.target.attributes[1].value).then(
+      loadBooks()
+    )
   }
 
   console.log(savedBooks)

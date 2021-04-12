@@ -16,5 +16,14 @@ module.exports = {
       console.log(err)
       res.status(500).send()}) 
 
-  }
+  },
+
+  deleteBook: function(req, res) {
+    console.log(req.params.id)
+    Book.findByIdAndDelete(req.params.id)
+    .catch(err =>{
+      console.log(err)
+      res.status(500).send()
+    })
+  },
 }
