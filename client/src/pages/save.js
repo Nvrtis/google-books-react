@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/container/container'
 import Row from '../components/row/row'
 import Col from '../components/col/col'
@@ -9,37 +9,34 @@ const Save = () => {
 
 
   useEffect(() => {
-    loadBooks();
+    API.getAllBooks().then(resp => { setSavedBooks(resp.data) })
   }, []);
 
-  function loadBooks() {
-    API.getAllBooks().then(resp => {setSavedBooks(resp)})
-
-  }
-
-
-console.log(savedBooks)
+  console.log(savedBooks)
   return (
     <Container>
       <Row>
-      {/* {savedBooks.map((book) => (
-          <Col className="col" key={book.id}>
-            <Card 
-              title={book.volumeInfo.title}
-              img={
-                book.volumeInfo.imageLinks === undefined
-                  ? ""
-                  : `${book.volumeInfo.imageLinks.thumbnail}`}
-              authors={book.volumeInfo.authors}
-              link={book.volumeInfo.canonicalVolumeLink}
-              dataId={book.id}
+        {savedBooks.length == 0 ?
+          "No saved books"
+          : savedBooks.map((book) => (
+            <Col className="col" key={book._id}>
+              <Card
+                title={book.title}
+                img={
+                  book.img === undefined
+                    ? ""
+                    : `${book.img}`}
+                authors={book.authors}
+                link={book.link}
+                dataId={book.id}
               />
-          </Col>
-        )
-        )} */}
+            </Col>
+          )
+          )
+        }
       </Row>
     </Container>
   )
 }
-
 export default Save
+
