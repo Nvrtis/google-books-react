@@ -16,6 +16,9 @@ const bookSchema = new Schema({
     },
     id: {
         type: String
+    },
+    desc: {
+        type: String
     }
 })
 

@@ -8,6 +8,8 @@ const app = express();
 // Connect to mongoose database 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Books", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false
 });
 

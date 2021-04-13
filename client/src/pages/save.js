@@ -41,6 +41,7 @@ const Save = () => {
                     : `${book.img}`}
                 authors={book.authors}
                 link={book.link}
+                desc={book.desc}
                 datavalue={book._id}
               />
             </Col>
