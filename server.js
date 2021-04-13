@@ -5,6 +5,7 @@ const router = require('./routes/api-routes')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+// Connect to mongoose database 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Books", {
   useNewUrlParser: true,
   useFindAndModify: false
@@ -14,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Books", {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }

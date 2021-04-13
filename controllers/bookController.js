@@ -2,6 +2,7 @@ const Book = require('../models/book')
 
 module.exports = {
 
+  // gets all the books (for saved page)
   getBooks: function (req, res) {
     Book.find({})
       .then(books => { res.json(books) })
@@ -9,6 +10,7 @@ module.exports = {
 
   },
 
+  // saves the books from google books to your own saved list
   createBooks: function (req, res) {
     Book.create(req.body)
       .then(bookData => { res.json(bookData) })
@@ -19,6 +21,7 @@ module.exports = {
 
   },
 
+  // deletes books from saved list
   deleteBook: function (req, res) {
     console.log(req.params.id)
     Book.findByIdAndDelete(req.params.id)
@@ -28,6 +31,7 @@ module.exports = {
       })
   },
 
+  // gets a single book from your list (used to check for duplicates)
   getBook: function (req, res) {
     console.log(req.params)
     Book.findOne(req.params)

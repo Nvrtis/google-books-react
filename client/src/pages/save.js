@@ -12,10 +12,12 @@ const Save = () => {
     loadBooks()
   }, []);
 
+  // loads book at rendering of page
   function loadBooks() {
     API.getAllBooks().then(resp => { setSavedBooks(resp.data) })
   }
 
+  // removes books from your saved list
   function handleDeleteClick(e) {
     e.preventDefault()
     API.deleteBook(e.target.attributes[1].value).then(

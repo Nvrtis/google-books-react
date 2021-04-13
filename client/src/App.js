@@ -6,10 +6,12 @@ import {
 import Save from './pages/save'
 import Home from './pages/home'
 import Nav from './components/nav/nav'
+import Header from './components/header/header'
 
 function App() {
   return (
     <Router>
+      <Header/>
       <Nav />
       <Switch>
         <Route path="/Save">

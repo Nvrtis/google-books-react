@@ -10,6 +10,8 @@ import API from "../utils/API"
 const Home = () => {
   const [books, setBooks] = useState([])
 
+
+  // Search for the books the user requests
   function handleSearchForm(e) {
     e.preventDefault()
     let searchQuery = e.target[0].value.replace(/\s/g, '+')
@@ -19,7 +21,7 @@ const Home = () => {
       }).catch(err => console.log(err))
   }
 
-
+// see if the user has already saved this file earlier, if no duplicates are found the user will store the book in a database
   function handleSaveClick(e) {
     e.preventDefault()
     API.getBook(e.target.parentElement.childNodes[4].attributes.dataid.value).then(resp => {

@@ -1,0 +1,18 @@
+.searchfield {
+    background-color: whitesmoke;
+    min-height: 150px;
+    margin-top: 10px;
+}
+
+.input-field, .searchbutton{
+    margin-top: 10px
+}
+
+.input-field {
+    padding: 0;
+    width: 350px;
+}
+
+.searchbutton{
+    margin-bottom: 0;
+}
