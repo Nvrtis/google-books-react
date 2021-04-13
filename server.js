@@ -5,14 +5,6 @@ const router = require('./routes/api-routes')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Connect to mongoose database 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Books", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,6 +16,14 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes here
 app.use(router)
+
+// Connect to mongoose database 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Books", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 // Send every other request to the React app
 // Define any API routes before this runs
