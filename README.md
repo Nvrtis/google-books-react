@@ -1,71 +1,35 @@
-# Getting Started with Create React App
+# Book Search App 
+  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  ![Main page](./client/img/main.png)
+ *Book images are from the google books api   
 
-## Available Scripts
+  [Link to webpage](https://rocky-escarpment-73196.herokuapp.com/)
+  
+  This app is for searching and saving you favorite/read Books 
+    
+  ## Table of Content
+  [-Installation](#Installation)  
+  [-Description](#Description)    
+  [-Usage](#Usage)  
+  [-Questions](#Questions)  
+  
+  
+  ## Installation  
+  The user requires Robo 3T to host local NO-SQL database. After the user has npm installed all the modules, the user requires an API key from google books api. After the user has recieved the API key, create a .env file in the src folder and use "REACT_APP_API_KEY = (Users api key)". Then the user can write npm start in the terminal to run the app locally.
 
-In the project directory, you can run:
+  ## Description  
+  This project uses google book api to search for books relevent to the users search term. The search "cards" the user recieves has to buttons, one directs the users to the google book link, the other to save the book to the users saved book list which is a NO-SQL database (mongo), it will only save the users book if the book is not in the list. The saved page also has a delete button for removing the book from the saved list.
 
-### `npm start`
+  ## Usage  
+  This project is used find books for the user and save the users favorite/read books.
+  
+  ## Questions?  
+  
+  <br/> My Github link is [NVrtis](https://github.com/NVrtis)
+  <br/> Any futher questions can be sent to my email here  <Nvav91@gmail.com>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# google-books-react
+  
+ 
+  
+  
