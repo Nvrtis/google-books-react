@@ -17,7 +17,6 @@ const Home = () => {
     let searchQuery = e.target[0].value.replace(/\s/g, '+')
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${process.env.REACT_APP_API_KEY}`)
       .then(resp => {
-        console.log(resp.data.items)
         setBooks(resp.data.items)
       }).catch(err => console.log(err))
   }
@@ -25,23 +24,28 @@ const Home = () => {
   // see if the user has already saved this file earlier, if no duplicates are found the user will store the book in a database
   function handleSaveClick(e) {
     e.preventDefault()
-    API.getBook(e.target.parentElement.childNodes[5].attributes.dataid.value).then(resp => {
-      if (resp.data === null) {
-        let saveBookData = {
-          title: e.target.parentElement.childNodes[1].innerHTML,
-          img: e.target.parentElement.childNodes[0].src,
-          authors: e.target.parentElement.childNodes[2].innerHTML,
-          desc: e.target.parentElement.childNodes[3].innerHTML,
-          link: e.target.parentElement.childNodes[4].href,
-          id: e.target.parentElement.childNodes[5].attributes.dataid.value,
+    if(e.target.innerHTML==="Link to buy") {
+      window.open(e.target.href);
+    } else {
+
+      API.getBook(e.target.parentElement.childNodes[5].attributes.dataid.value).then(resp => {
+        if (resp.data === null) {
+          let saveBookData = {
+            title: e.target.parentElement.childNodes[1].innerHTML,
+            img: e.target.parentElement.childNodes[0].src,
+            authors: e.target.parentElement.childNodes[2].innerHTML,
+            desc: e.target.parentElement.childNodes[3].innerHTML,
+            link: e.target.parentElement.childNodes[4].href,
+            id: e.target.parentElement.childNodes[5].attributes.dataid.value,
+          }
+          API.postBook(saveBookData)
+            .then(resp => { console.log(resp) })
+            .catch(err => console.log(err))
+        } else {
+          alert("book already in saved storage")
         }
-        API.postBook(saveBookData)
-          .then(resp => { console.log(resp) })
-          .catch(err => console.log(err))
-      } else {
-        alert("book already in saved storage")
-      }
-    })
+      })
+    }
 
   }
 

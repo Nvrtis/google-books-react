@@ -5,9 +5,7 @@ import "./style.css"
 
 // deconstruct props and makes the cards for projects
 const Card = ({title, img, authors, link, dataid, desc}) => {
-  // console.log(props.volumeInfo.imageLinks.smallThumbnail)
-  // console.log(props.volumeInfo.imageLinks.thumbnail)
-// console.log(title)
+console.log(link)
   return (
     <div className="card">
       <div className="card-body">
